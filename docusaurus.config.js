@@ -10,7 +10,7 @@ module.exports = {
   projectName: "docusaurus", // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: "김도영의 TIL 🚀",
+      title: "Dosimpact | TIL 🚀",
       logo: {
         alt: "My Site Logo",
         src:
@@ -87,15 +87,13 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/",
+          // ✅ Please change this to your repo.
+          editUrl: "https://github.com/DosImpact/TIL/edit/master/",
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/blog/",
+          // ✅ Please change this to your repo.
+          editUrl: "https://github.com/DosImpact/TIL/edit/master/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
