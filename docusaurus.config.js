@@ -1,6 +1,6 @@
 module.exports = {
-  title: "My Site",
-  tagline: "The tagline of my site",
+  title: "김도영 (Kim Do Young)",
+  tagline: "TS 풀스택 프로그래머를 꿈꾸는 프론트 주력의 개발자 입니다.",
   url: "https://your-docusaurus-test-site.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -25,8 +25,14 @@ module.exports = {
         },
         { to: "blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/DosImpact/TIL",
           label: "GitHub",
+          position: "right",
+        },
+        {
+          href:
+            "https://www.notion.so/Kim-Do-Young-623609d5699849b3a5db5b1cc248c609",
+          label: "Notion",
           position: "right",
         },
       ],

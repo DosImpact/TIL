@@ -8,8 +8,9 @@ import styles from "./styles.module.css";
 
 const features = [
   {
-    title: "Easy to Use",
-    imageUrl: "img/undraw_docusaurus_mountain.svg",
+    title: "TypeScript",
+    imageUrl:
+      "https://res.cloudinary.com/practicaldev/image/fetch/s--LkL103Qa--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/377/landscape/typescriptlang.png",
     description: (
       <>
         Docusaurus was designed from the ground up to be easily installed and
@@ -18,8 +19,9 @@ const features = [
     ),
   },
   {
-    title: "Focus on What Matters",
-    imageUrl: "img/undraw_docusaurus_tree.svg",
+    title: "React TSX",
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
@@ -28,12 +30,37 @@ const features = [
     ),
   },
   {
-    title: "Powered by React",
-    imageUrl: "img/undraw_docusaurus_react.svg",
+    title: "Nest JS",
+    imageUrl:
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400/fecece74182713.5c254609b1588.png",
     description: (
       <>
         Extend or customize your website layout by reusing React. Docusaurus can
         be extended while reusing the same header and footer.
+      </>
+    ),
+  },
+  {
+    title: "puppeteer",
+    imageUrl: "https://i.morioh.com/8a98fb34de.png",
+    description: (
+      <>
+        Extend or customize your website layout by reusing React. Docusaurus can
+        be extended while reusing the same header and footer.
+      </>
+    ),
+  },
+];
+
+const mainProject = [
+  {
+    title: "TypeScript",
+    imageUrl:
+      "https://res.cloudinary.com/practicaldev/image/fetch/s--LkL103Qa--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/377/landscape/typescriptlang.png",
+    description: (
+      <>
+        Docusaurus was designed from the ground up to be easily installed and
+        used to get your website up and running quickly.
       </>
     ),
   },
@@ -45,7 +72,12 @@ function Feature({ imageUrl, title, description }) {
     <div className={clsx("col col--4", styles.feature)}>
       {imgUrl && (
         <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+          <img
+            style={{ objectFit: "contain" }}
+            className={styles.featureImage}
+            src={imgUrl}
+            alt={title}
+          />
         </div>
       )}
       <h3>{title}</h3>
@@ -74,18 +106,34 @@ function Home() {
               )}
               to={useBaseUrl("docs/")}
             >
-              Get Started
+              🚀 TIL ( Today I Learned )
             </Link>
           </div>
         </div>
       </header>
 
-      <main>
+      <main className="mainSection">
+        <div className="mainSectionTitle">Skills</div>
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className="container">
               <div className="row">
                 {features.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+      </main>
+
+      <main className="mainSection">
+        <div className="mainSectionTitle">Project</div>
+        {mainProject && mainProject.length > 0 && (
+          <section className={styles.mainProject}>
+            <div className="container">
+              <div className="row">
+                {mainProject.map((props, idx) => (
                   <Feature key={idx} {...props} />
                 ))}
               </div>
