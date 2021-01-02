@@ -1,14 +1,10 @@
 const FULLSTACK_Folder = "1_fullstack";
 const DB_Folder = "2_DB";
 const DEVOPS_Folder = "3_devops";
+const ETC_Folder = "4_etc";
 
 const sideBars = {
   docs: [
-    {
-      type: "category",
-      label: "employ",
-      items: ["employ/feedsite"],
-    },
     // ========== FULLSTACK_Folder ====================
     {
       type: "doc",
@@ -18,6 +14,7 @@ const sideBars = {
       type: "category",
       label: "Styles",
       items: ["mdx"],
+      collapsed: false,
     },
     // ========== DB_Folder ====================
     {
@@ -28,6 +25,7 @@ const sideBars = {
       type: "category",
       label: "Guides",
       items: [{ Docs: ["doc1", "doc2", "doc3"] }, "test", "sample/test"],
+      collapsed: false,
     },
     // ========== DEVOPS_Folder ====================
     {
@@ -38,6 +36,25 @@ const sideBars = {
       type: "category",
       label: "github",
       items: [`${DEVOPS_Folder}/github/style/badge`],
+      collapsed: false,
+    },
+
+    // ========== ETC_Folder ====================
+    {
+      type: "doc",
+      id: `${ETC_Folder}/schema`,
+    },
+    {
+      type: "category",
+      label: "employ",
+      items: [`${ETC_Folder}/employ/feedsite`],
+      collapsed: true,
+    },
+    {
+      type: "category",
+      label: "util",
+      items: [`${ETC_Folder}/util/PasteIntoFile`],
+      collapsed: true,
     },
   ],
 };
