@@ -1,4 +1,20 @@
-# 또한 이것도 업데이트
+# Today I Learned(TIL) Blog
+
+- Blog  
+   [https://dosimpact-til.netlify.app/](https://dosimpact-til.netlify.app/)  
+  <a href="https://dosimpact-til.netlify.app/"><img src="https://img.shields.io/badge/%EB%82%98%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%EB%B8%94%EB%A1%9C%EA%B7%B8-https%3A%2F%2Fdosimpact--til.netlify.app%2F-blueviolet" alt="Blog" /></a>
+
+- 자기소개  
+   [https://www.notion.so/dosimpact/Kim-Do-Young-623609d5699849b3a5db5b1cc248c609](https://www.notion.so/dosimpact/Kim-Do-Young-623609d5699849b3a5db5b1cc248c609)  
+  <a href="https://www.notion.so/dosimpact/Kim-Do-Young-623609d5699849b3a5db5b1cc248c609"><img src="https://img.shields.io/badge/%EC%9E%90%EA%B8%B0%EC%86%8C%EA%B0%9C-Notion-yellowgreen" alt="Notion" /></a>
+
+---
+
+- [인턴 및 채용 공고](./docs/doc1.md)
+
+---
+
+# Deprecated
 
 - docs
 
@@ -8,37 +24,3 @@
 
 - sample
   [./sample/test.md](./docs/sample/test.md)
-
-# Website
-
-This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
-
-## Installation
-
-```console
-yarn install
-```
-
-## Local Development
-
-```console
-yarn start
-```
-
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
-
-```console
-yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-```console
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
