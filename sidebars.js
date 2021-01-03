@@ -48,7 +48,14 @@ const sideBars = {
     {
       type: "category",
       label: "MSA",
-      items: [`${CS_Folder}/MSA/MSA-1`],
+      items: [
+        `${CS_Folder}/MSA/MSA-1`,
+        `${CS_Folder}/MSA/MSA-2`,
+        `${CS_Folder}/MSA/MSA-3`,
+        `${CS_Folder}/MSA/MSA-4`,
+        `${CS_Folder}/MSA/MSA-5`,
+        `${CS_Folder}/MSA/MSA-6`,
+      ],
       collapsed: true,
     },
     // ========== ETC_Folder ====================
