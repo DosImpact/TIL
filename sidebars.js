@@ -1,7 +1,8 @@
 const FULLSTACK_Folder = "1_fullstack";
 const DB_Folder = "2_DB";
 const DEVOPS_Folder = "3_devops";
-const ETC_Folder = "4_etc";
+const CS_Folder = "4_cs";
+const ETC_Folder = "5_etc";
 
 const sideBars = {
   docs: [
@@ -39,6 +40,17 @@ const sideBars = {
       collapsed: false,
     },
 
+    // ========== CS_Folder ====================
+    {
+      type: "doc",
+      id: `${CS_Folder}/schema`,
+    },
+    {
+      type: "category",
+      label: "MSA",
+      items: [`${CS_Folder}/MSA/MSA-1`],
+      collapsed: true,
+    },
     // ========== ETC_Folder ====================
     {
       type: "doc",
