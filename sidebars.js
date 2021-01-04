@@ -56,7 +56,11 @@ const sideBars = {
         `${CS_Folder}/MSA/MSA-5`,
         `${CS_Folder}/MSA/MSA-6`,
       ],
-      collapsed: true,
+    },
+    {
+      type: "category",
+      label: "Front",
+      items: [`${CS_Folder}/Front/svelte`],
     },
     // ========== ETC_Folder ====================
     {
