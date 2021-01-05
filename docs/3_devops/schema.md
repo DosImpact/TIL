@@ -1,3 +1,3 @@
 ---
-title: 📌-------- DevOps
+title: 🚀 DevOps
 ---

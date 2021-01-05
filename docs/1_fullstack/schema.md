@@ -1,3 +1,3 @@
 ---
-title: 📌-------- fullstack
+title: 🚀 FullStack
 ---

@@ -13,8 +13,8 @@ const sideBars = {
     },
     {
       type: "category",
-      label: "Styles",
-      items: ["mdx"],
+      label: "NestJS",
+      items: [`${FULLSTACK_Folder}/nestjs/nestjs-restapi`],
       collapsed: false,
     },
     // ========== DB_Folder ====================
