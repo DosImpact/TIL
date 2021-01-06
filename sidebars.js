@@ -14,7 +14,10 @@ const sideBars = {
     {
       type: "category",
       label: "NestJS",
-      items: [`${FULLSTACK_Folder}/nestjs/nestjs-restapi`],
+      items: [
+        `${FULLSTACK_Folder}/nestjs/nestjs-restapi`,
+        `${FULLSTACK_Folder}/nestjs/nestjs-graphql-api.md`,
+      ],
       collapsed: false,
     },
     // ========== DB_Folder ====================
