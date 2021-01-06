@@ -426,9 +426,40 @@ if 들어가고
 
 if 또 들어가고
 
-if 또 들어가고 하는 방법에서
+if 또 들어가고 하는 방법에서 ( N-depth 조건문 코드 )
 
-- if 예외상황이 있나 check 하는 방법 - 방어적 프로그래밍으로 리팩토링
+- if 예외상황이 있나 check 하는 방법, 값이 없거나 애러가 있으면 바로 return 한다. ( 1-depth 코드 )
+- 이것을 **방어적 프로그래밍** 라고 한다.
+
+### ⚠ url Route 공통인 부분은 분리시키자.
+
+- 분리전 : 하나의 root 엔트리 포인트
+
+```ts
+@Controller('/')
+```
+
+- 분리후 : 신택스 단위로 최대한 묶었다.
+- padcasts 에 관한 url
+- 에피소드에 관한 url
+
+```ts
+@Controller('/podcasts')
+@Controller('/podcasts/:id')
+```
+
+eg)
+
+```ts
+@Controller('/podcasts/:id')
+export class EpisodeController {
+  constructor(private readonly podcastService: PodcastsService) {}
+  @Get('/episodes')
+  getEpisodes(@Param('id') podcastId: string) {
+    return this.podcastService.getEpisodes(podcastId);
+  }
+  ...
+```
 
 ## 참조
 
