@@ -16,7 +16,7 @@ const sideBars = {
       label: "NestJS",
       items: [
         `${FULLSTACK_Folder}/nestjs/nestjs-restapi`,
-        `${FULLSTACK_Folder}/nestjs/nestjs-graphql-api.md`,
+        `${FULLSTACK_Folder}/nestjs/nestjs-graphql-api`,
       ],
       collapsed: false,
     },
