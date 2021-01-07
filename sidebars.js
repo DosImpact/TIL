@@ -17,6 +17,7 @@ const sideBars = {
       items: [
         `${FULLSTACK_Folder}/nestjs/nestjs-restapi`,
         `${FULLSTACK_Folder}/nestjs/nestjs-graphql-api`,
+        `${FULLSTACK_Folder}/nestjs-prisma`,
       ],
       collapsed: false,
     },
