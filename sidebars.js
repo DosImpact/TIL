@@ -19,6 +19,7 @@ const sideBars = {
         `${FULLSTACK_Folder}/nestjs/nestjs-graphql-api`,
         `${FULLSTACK_Folder}/nestjs/nestjs-prisma`,
         `${FULLSTACK_Folder}/nestjs/nestjs-typeorm01`,
+        `${FULLSTACK_Folder}/typeorm/typeorm_model01`,
       ],
       collapsed: false,
     },
