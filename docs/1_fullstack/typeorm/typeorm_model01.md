@@ -291,6 +291,34 @@ User {
         }
     ]
 }
+{
+    "id": 11,
+    "username": "joe",
+    "notesYouShared": [
+        {
+            "targetId": 12,
+            "senderId": 11,
+            "noteId": 11,
+            "note": {
+                "id": 11,
+                "text": "hello tim",
+                "ownerId": 11
+            }
+        }
+    ],
+    "notesSharedWithYou": [
+        {
+            "targetId": 11,
+            "senderId": 12,
+            "noteId": 12,
+            "note": {
+                "id": 12,
+                "text": "hello jeo",
+                "ownerId": 12
+            }
+        }
+    ]
+}
 ```
 
 ## Feedback
