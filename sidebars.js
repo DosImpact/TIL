@@ -55,6 +55,16 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "Front",
+      items: [`${CS_Folder}/Front/svelte`],
+    },
+    {
+      type: "category",
+      label: "HTTP",
+      items: [`${CS_Folder}/HTTP/cache`],
+    },
+    {
+      type: "category",
       label: "MSA",
       items: [
         `${CS_Folder}/MSA/MSA-1`,
@@ -64,11 +74,6 @@ const sideBars = {
         `${CS_Folder}/MSA/MSA-5`,
         `${CS_Folder}/MSA/MSA-6`,
       ],
-    },
-    {
-      type: "category",
-      label: "Front",
-      items: [`${CS_Folder}/Front/svelte`],
     },
     // ========== ETC_Folder ====================
     {
