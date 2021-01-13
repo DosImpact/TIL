@@ -18,11 +18,17 @@ const sideBars = {
         `${FULLSTACK_Folder}/nestjs/nestjs-restapi`,
         `${FULLSTACK_Folder}/nestjs/nestjs-graphql-api`,
         `${FULLSTACK_Folder}/nestjs/nestjs-prisma`,
-        `${FULLSTACK_Folder}/nestjs/nestjs-typeorm01`,
+        `${FULLSTACK_Folder}/nestjs/nestjs-msa-01`,
+        `${FULLSTACK_Folder}/graphql/graphql-pubsub01`,
         `${FULLSTACK_Folder}/typeorm/typeorm_model01`,
         `${FULLSTACK_Folder}/graphql/graphql-pubsub01`,
-        `${FULLSTACK_Folder}/react/setting`,
       ],
+      collapsed: false,
+    },
+    {
+      type: "category",
+      label: "React",
+      items: [`${FULLSTACK_Folder}/react/setting`],
       collapsed: false,
     },
     // ========== DB_Folder ====================
@@ -73,6 +79,7 @@ const sideBars = {
         `${CS_Folder}/MSA/MSA-4`,
         `${CS_Folder}/MSA/MSA-5`,
         `${CS_Folder}/MSA/MSA-6`,
+        `${CS_Folder}/MSA/Redis`,
       ],
     },
     // ========== ETC_Folder ====================
