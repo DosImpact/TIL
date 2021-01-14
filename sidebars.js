@@ -27,6 +27,12 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "NestJS Auth",
+      items: [`${FULLSTACK_Folder}/nestjs-auth/nestjs-auth-01`],
+      collapsed: false,
+    },
+    {
+      type: "category",
       label: "React",
       items: [`${FULLSTACK_Folder}/react/setting`],
       collapsed: false,
