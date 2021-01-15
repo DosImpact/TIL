@@ -34,7 +34,10 @@ const sideBars = {
     {
       type: "category",
       label: "React",
-      items: [`${FULLSTACK_Folder}/react/setting`],
+      items: [
+        `${FULLSTACK_Folder}/react/setting`,
+        `${FULLSTACK_Folder}/react/hooks/use-modal`,
+      ],
       collapsed: false,
     },
     // ========== DB_Folder ====================
