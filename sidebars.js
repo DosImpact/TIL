@@ -23,13 +23,13 @@ const sideBars = {
         `${FULLSTACK_Folder}/typeorm/typeorm_model01`,
         `${FULLSTACK_Folder}/graphql/graphql-pubsub01`,
       ],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: "category",
       label: "NestJS Auth",
       items: [`${FULLSTACK_Folder}/nestjs-auth/nestjs-auth-01`],
-      collapsed: false,
+      collapsed: true,
     },
     {
       type: "category",
@@ -38,7 +38,7 @@ const sideBars = {
         `${FULLSTACK_Folder}/react/setting`,
         `${FULLSTACK_Folder}/react/hooks/use-modal`,
       ],
-      collapsed: false,
+      collapsed: true,
     },
     // ========== DB_Folder ====================
     {
@@ -49,7 +49,7 @@ const sideBars = {
       type: "category",
       label: "Guides",
       items: [{ Docs: ["doc1", "doc2", "doc3"] }, "test", "sample/test"],
-      collapsed: false,
+      collapsed: true,
     },
     // ========== DEVOPS_Folder ====================
     {
@@ -60,7 +60,7 @@ const sideBars = {
       type: "category",
       label: "github",
       items: [`${DEVOPS_Folder}/github/style/badge`],
-      collapsed: false,
+      collapsed: true,
     },
 
     // ========== CS_Folder ====================
@@ -70,13 +70,21 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "algorithm",
+      items: [`${CS_Folder}/algorithm/strategery`],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "Front",
       items: [`${CS_Folder}/Front/svelte`],
+      collapsed: true,
     },
     {
       type: "category",
       label: "HTTP",
       items: [`${CS_Folder}/HTTP/cache`],
+      collapsed: true,
     },
     {
       type: "category",
@@ -90,6 +98,7 @@ const sideBars = {
         `${CS_Folder}/MSA/MSA-6`,
         `${CS_Folder}/MSA/Redis`,
       ],
+      collapsed: true,
     },
     // ========== ETC_Folder ====================
     {
