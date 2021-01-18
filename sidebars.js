@@ -22,6 +22,7 @@ const sideBars = {
         `${FULLSTACK_Folder}/graphql/graphql-pubsub01`,
         `${FULLSTACK_Folder}/typeorm/typeorm_model01`,
         `${FULLSTACK_Folder}/graphql/graphql-pubsub01`,
+        `${FULLSTACK_Folder}/graphql/nestjs-e2e`,
       ],
       collapsed: true,
     },
