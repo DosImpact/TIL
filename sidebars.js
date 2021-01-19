@@ -41,6 +41,12 @@ const sideBars = {
       ],
       collapsed: true,
     },
+    {
+      type: "category",
+      label: "apollo",
+      items: [`${FULLSTACK_Folder}/apollo/apollo-cli`],
+      collapsed: true,
+    },
     // ========== DB_Folder ====================
     {
       type: "doc",

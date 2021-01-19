@@ -36,6 +36,7 @@ title: NestJS E2E Test
 }
 ```
 
+- jest를 실행하면 NODE_ENV = test 셋팅되어 실행.
 - env 문제 : .env.test 파일을 그대로 만들어주고, test DB를 사용하자
 
 ```ts
