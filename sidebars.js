@@ -29,7 +29,12 @@ const sideBars = {
     {
       type: "category",
       label: "NestJS Auth",
-      items: [`${FULLSTACK_Folder}/nestjs-auth/nestjs-auth-01`],
+      items: [
+        `${FULLSTACK_Folder}/nestjs-auth/nestjs-auth-01`,
+        `${FULLSTACK_Folder}/nestjs-auth/nestjs-auth-02`,
+        `${FULLSTACK_Folder}/nestjs-auth/nestjs-auth-03`,
+        `${FULLSTACK_Folder}/nestjs-auth/nestjs-auth-04`,
+      ],
       collapsed: true,
     },
     {

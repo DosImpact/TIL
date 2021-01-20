@@ -1,5 +1,5 @@
 ---
-title: NestJS MiddleWare JWT
+title: NestJS Auth Guard
 ---
 
 ## 목적 - JWT 토큰을 처리하는 미들웨어 제작
@@ -10,100 +10,167 @@ title: NestJS MiddleWare JWT
    사용자의 접근 권한을 true/false로 리턴 ( 위 req 에 user 정보에 따라 API 접근 여부 판단 ) ( 2가지 방법 - .., meta date 이용 )
 4. Auth decorator 를 제작 : 데코레이터를 통해 user 정보를 리턴 ( 위 req에 user 정보를 데코레이터로 제공 )
 
-## NestJS 는 물론 Passport 와 JWT 구현을 해 두었다.
+# 1 useGuards
 
-    - https://docs.nestjs.com/techniques/authentication
-
-## 하지만 직접 root 모듈을 만들어서 구현해보자.
-
-메일 기능을 위한 모듈을 만들어야해서
-
-## 모듈에는 두가지 종류가 있다.
-
-- static 모듈 : 설정 없이 부착
-- dynamic 모듈 : option으로 모듈을 생성 후 option으로 모듈이 정해지면 정적 모듈이 된다.
-  NestJS 는 이러한 모듈을을 어디서든 불러올 수 있게 해준다 ( 이러한 방식의 설계 디자인패턴을 DI 라고도 한다. )
-
-## 글로벌 모듈과 아닌 모듈
-
-- Global 데코레이터를 이용해서 jwt커스텀 모듈을 글로벌로 만들 수 있다.
-- isGlobal 옵션을 제공하는 config 을 주어서 선택권을 줄 수 있다. ( 옵션에따라 변하는 모듈이라 dynamic모듈이라고 한다.)
-- 글로벌모듈은 User모듈에서 따로 import할 필요없다.
-
-## 1. JWT 커스텀 모듈 제작
-
-- 목적 : jwt토큰을 암호화,복호화 (jwt.sign,jwt.verify) 를 제공하는 서비스를 담고있는 커스텀 모듈 제작
-- jwt.module.ts 제작
+    1. 가드 작성
+    2. userGuard 사용
 
 ```ts
-// 모듈 option interface
-export interface JwtModuleOptions {
-  privateKey: string;
-}
-// @Inject key 값 정의
-export const CONFIG_OPTIONS = "CONFIG_OPTIONS";
-
-import { DynamicModule, Global, Module } from "@nestjs/common";
-import { CONFIG_OPTIONS } from "src/common/common.constants";
-import { JwtModuleOptions } from "./jwt.interface";
-import { JwtService } from "./jwt.service";
-
-// global 데코레이터를 사용하면, user모듈에서 사용할때 import 없이 사용가능
-// service에서 바로 사용 가능,   private readonly jwtService: JwtService
-@Module({})
-@Global()
-export class JwtModule {
-  // forRoot는 모듈을 리턴합니다. Dynamic모듈의 옵션을 정의합니다.
-  static forRoot(options: JwtModuleOptions): DynamicModule {
-    return {
-      module: JwtModule,
-      exports: [JwtService], // Service 로직 exports
-      providers: [
-        {
-          provide: JwtService,
-          useClass: JwtService, // provider의 class Type 선언
-        },
-        {
-          provide: CONFIG_OPTIONS,
-          useValue: options, // provider의 value Type 선언
-        },
-      ],
-    };
+import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
+import { GqlExecutionContext } from "@nestjs/graphql";
+@Injectable()
+export class AuthGuard implements CanActivate {
+  canActivate(context: ExecutionContext) {
+    const gqlContext = GqlExecutionContext.create(context).getContext();
+    const user = gqlContext["user"];
+    console.log("user", user);
+    if (!user) {
+      return false;
+    }
+    return true;
   }
 }
 ```
 
-- app.module.ts 장착
-
 ```ts
-@Module({
-  imports: [
-        ...
-    JwtModule.forRoot({
-      privateKey: process.env.SECRET_KEY,
-    }),
-        ......
-  ],
-  controllers: [],
-  providers: [],
-})
+import { AuthGuard } from "../auth/auth.guard";
+
+@Resolver((of) => User)
+export class UsersResolver {
+  @UseGuards(AuthGuard)
+  @Query((returns) => User)
+  me(@AuthUser() authUser: User): User {
+    return authUser;
+  }
+}
 ```
 
-- users.service.ts 사용
+# 2 setMetaData
+
+주의 : UseGuard를 사용하면 SetMetaData가 작동한다. ( 반드시 제거 )
+
+- 제작
+
+1. Auth 모듈 provider를 미리 정의된 상수로 제공
+2. 그러면 Reflector를 주입 받는다.
+3. 그리기 위해 app 모듈에 auth 모듈 장착
 
 ```ts
+import { Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './auth.guard';
+@Module({
+  providers: [
+    {
+      provide: APP_GUARD, // nestjs에서 제공하는 constants 이다. APP_GUARD가 provide되는곳에 다 사용 가능
+      useClass: AuthGuard,
+    },
+  ],
+})
+export class AuthModule {}
+
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { GqlExecutionContext } from '@nestjs/graphql';
+
 @Injectable()
-export class UsersService {
-  constructor(
-    @InjectRepository(User)
-    private readonly users: Repository<User>,
-    @InjectRepository(Verification)
-    private readonly verifications: Repository<Verification>,
-    // private readonly config: ConfigService,
-    private readonly jwtService: JwtService,
-    private readonly mailService: MailService
-  ) {
-    // jwtService.hello()
+export class AuthGuard implements CanActivate {
+
+constructor(private readonly reflector: Reflector) {}
+
+canActivate(context: ExecutionContext) {
+    const gqlContext = GqlExecutionContext.create(context).getContext();
+    const user = gqlContext['user'];
+    console.log('user', user);
+
+console.log('reflector', this.reflector.get('key', context.getHandler()));
+
+if (!user) {
+      return false;
+    }
+    return true;
+  }
+}
+
+@Module({
+  imports: [
+…
+AuthModule,
+  ],
+})
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(JwtMiddleware).forRoutes({
+      path: '/graphql',
+      method: RequestMethod.POST,
+    });
+  }
+}
+```
+
+    - 사용
+
+```ts
+@SetMetadata('key', 'nanana')
+  @Query(returns => User)
+  me(@AuthUser() authUser: User): User {
+    return authUser;
+  }
+```
+
+# 3 setMetaData More
+
+1.  UserRole enum과 통합 - metaData의 value로 사용한다.
+
+```ts
+import { SetMetadata } from "@nestjs/common";
+import { UserRole } from "src/users/entities/user.entity";
+// UserRole는 enum이고 keyof + typeof 로 enum에 지정된 string을 가져올 수 있다.
+export type AllowRoles = keyof typeof UserRole | "Any";
+export const Role = (roles: AllowRoles[]) => SetMetadata("roles", roles);
+```
+
+    2. 새로운 MetaData 장착
+
+```ts
+@Role(['Any'])
+  @Query(returns => User)
+  me(@AuthUser() authUser: User): User {
+    return authUser;
+  }
+```
+
+    3. 사용
+
+```ts
+import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
+import { Reflector } from "@nestjs/core";
+import { GqlExecutionContext } from "@nestjs/graphql";
+import { User } from "src/users/entities/user.entity";
+import { AllowRoles } from "./role.decorator";
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(private readonly reflector: Reflector) {}
+  canActivate(context: ExecutionContext) {
+    const roles = this.reflector.get<AllowRoles>("roles", context.getHandler());
+    console.log(roles); // Authentication
+    if (!roles) {
+      return true; // Authentication - no needed
+    } else {
+      const gqlContext = GqlExecutionContext.create(context).getContext();
+      const user: User = gqlContext["user"];
+      if (!user) {
+        return false; // Authentication - ❌
+      } // Authentication - ✅
+      if (user) {
+        console.log(user); // Authorization
+        if (roles.includes("Any")) {
+          return true;
+        }
+        return roles.includes(user.role);
+      }
+    }
   }
 }
 ```

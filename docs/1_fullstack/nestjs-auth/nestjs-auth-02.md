@@ -1,5 +1,5 @@
 ---
-title: NestJS MiddleWare JWT
+title: NestJS MiddleWare
 ---
 
 ## 목적 - JWT 토큰을 처리하는 미들웨어 제작
@@ -10,100 +10,104 @@ title: NestJS MiddleWare JWT
    사용자의 접근 권한을 true/false로 리턴 ( 위 req 에 user 정보에 따라 API 접근 여부 판단 ) ( 2가지 방법 - .., meta date 이용 )
 4. Auth decorator 를 제작 : 데코레이터를 통해 user 정보를 리턴 ( 위 req에 user 정보를 데코레이터로 제공 )
 
-## NestJS 는 물론 Passport 와 JWT 구현을 해 두었다.
+## Jwt 미들웨어 제작 목적 : req['user'] 에 정보를 넣어줌 ( 2가지 방법 - express 직접 넣기, nestjs에 넣기 )
 
-    - https://docs.nestjs.com/techniques/authentication
+# Eg) JWT 인증 미들웨어
 
-## 하지만 직접 root 모듈을 만들어서 구현해보자.
+- NestMiddleware 구현 후 App 모듈에 configure 설정
+  https://docs.nestjs.com/middleware#middleware
 
-메일 기능을 위한 모듈을 만들어야해서
-
-## 모듈에는 두가지 종류가 있다.
-
-- static 모듈 : 설정 없이 부착
-- dynamic 모듈 : option으로 모듈을 생성 후 option으로 모듈이 정해지면 정적 모듈이 된다.
-  NestJS 는 이러한 모듈을을 어디서든 불러올 수 있게 해준다 ( 이러한 방식의 설계 디자인패턴을 DI 라고도 한다. )
-
-## 글로벌 모듈과 아닌 모듈
-
-- Global 데코레이터를 이용해서 jwt커스텀 모듈을 글로벌로 만들 수 있다.
-- isGlobal 옵션을 제공하는 config 을 주어서 선택권을 줄 수 있다. ( 옵션에따라 변하는 모듈이라 dynamic모듈이라고 한다.)
-- 글로벌모듈은 User모듈에서 따로 import할 필요없다.
-
-## 1. JWT 커스텀 모듈 제작
-
-- 목적 : jwt토큰을 암호화,복호화 (jwt.sign,jwt.verify) 를 제공하는 서비스를 담고있는 커스텀 모듈 제작
-- jwt.module.ts 제작
+- 1. NestMiddleware 을 구현하고 App모듈에서 컨슘 한다.
+- 2. express.js 처럼 미들웨어를 만든다.
 
 ```ts
-// 모듈 option interface
-export interface JwtModuleOptions {
-  privateKey: string;
-}
-// @Inject key 값 정의
-export const CONFIG_OPTIONS = "CONFIG_OPTIONS";
-
-import { DynamicModule, Global, Module } from "@nestjs/common";
-import { CONFIG_OPTIONS } from "src/common/common.constants";
-import { JwtModuleOptions } from "./jwt.interface";
+import { Injectable, NestMiddleware } from "@nestjs/common";
+import { NextFunction, Request, Response } from "express";
+import { UsersService } from "src/users/users.service";
 import { JwtService } from "./jwt.service";
 
-// global 데코레이터를 사용하면, user모듈에서 사용할때 import 없이 사용가능
-// service에서 바로 사용 가능,   private readonly jwtService: JwtService
-@Module({})
-@Global()
-export class JwtModule {
-  // forRoot는 모듈을 리턴합니다. Dynamic모듈의 옵션을 정의합니다.
-  static forRoot(options: JwtModuleOptions): DynamicModule {
-    return {
-      module: JwtModule,
-      exports: [JwtService], // Service 로직 exports
-      providers: [
-        {
-          provide: JwtService,
-          useClass: JwtService, // provider의 class Type 선언
-        },
-        {
-          provide: CONFIG_OPTIONS,
-          useValue: options, // provider의 value Type 선언
-        },
-      ],
-    };
+// 방법1. MiddlewareConsumer 에서 apply해서 사용
+@Injectable()
+export class JwtMiddleWare implements NestMiddleware {
+  constructor(
+    private readonly jwtService: JwtService,
+    private readonly usersService: UsersService
+  ) {}
+  async use(req: Request, res: Response, next: NextFunction) {
+    // console.log(req.headers["banana"]);
+    // console.log("JwtMiddleWare");
+    if ("x-jwt" in req.headers) {
+      const token = req.headers["x-jwt"];
+      try {
+        const decoded = this.jwtService.verify(token.toString());
+        if (typeof decoded === "object" && decoded.hasOwnProperty("id")) {
+          // console.log(decoded['id']);
+          const { user, ok } = await this.usersService.findById(decoded["id"]);
+          if (ok) {
+            req["user"] = user;
+          } // console.log(user);
+        }
+      } catch (error) {}
+    }
+    next();
   }
+}
+// 방법2. 함수형태로 만들어서 미들웨어를 만들어도 된다.
+// index.ts 에서 use로 사용!
+export function JwtMiddleWareFunc(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  // console.log(req.headers);
+  console.log("JwtMiddleWareFunc");
+  next();
 }
 ```
 
-- app.module.ts 장착
+### 방법 1 적용 - 미들웨어 consumer 이용
+
+```ts
+export class AppModule  implements NestModule { 
+  configure(consumer: MiddlewareConsumer){
+    consumer.apply(JwtMiddleWare).forRoutes({
+      // path:"/graphql",
+      // method:RequestMethod.POST
+      path:"*",
+      method:RequestMethod.ALL
+    })
+  }
+```
+
+### 방법 2 적용 - express.js 방식
+
+    - main.ts 에서 app.use에 미들웨어 함수 넣기 ( express 에서 했던 방법이랑 동일 )
+
+```ts
+import { ValidationPipe } from "@nestjs/common";
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
+import { JwtMiddleWareFunc } from "./jwt/jwt.middleware";
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
+  app.use(JwtMiddleWareFunc);
+  await app.listen(4000);
+}
+bootstrap();
+```
+
+# More) JWT 미들웨어 클래스에 UserService DI 하기
+
+    - Jwt미들웨어는 하나의 서비스이다. 그리고 userService를 알기위해서는 users모듈이 이를 export 해야한다.
 
 ```ts
 @Module({
   imports: [
-        ...
-    JwtModule.forRoot({
-      privateKey: process.env.SECRET_KEY,
-    }),
-        ......
+    TypeOrmModule.forFeature([User]), // , ConfigService // , JwtService
   ],
-  controllers: [],
-  providers: [],
+  providers: [UsersResolver, UsersService],
+  exports: [UsersService], // jwt middleware에서 사용하기 위해 exports를 해준다.
 })
-```
-
-- users.service.ts 사용
-
-```ts
-@Injectable()
-export class UsersService {
-  constructor(
-    @InjectRepository(User)
-    private readonly users: Repository<User>,
-    @InjectRepository(Verification)
-    private readonly verifications: Repository<Verification>,
-    // private readonly config: ConfigService,
-    private readonly jwtService: JwtService,
-    private readonly mailService: MailService
-  ) {
-    // jwtService.hello()
-  }
-}
+export class UsersModule {}
 ```

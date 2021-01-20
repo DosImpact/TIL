@@ -1,5 +1,5 @@
 ---
-title: NestJS MiddleWare JWT
+title: NestJS MiddleWare Module
 ---
 
 ## 목적 - JWT 토큰을 처리하는 미들웨어 제작
