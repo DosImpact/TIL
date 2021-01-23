@@ -43,6 +43,7 @@ const sideBars = {
       items: [
         `${FULLSTACK_Folder}/react/setting`,
         `${FULLSTACK_Folder}/react/hooks/use-modal`,
+        `${FULLSTACK_Folder}/react/hooks/useContext`,
         `${FULLSTACK_Folder}/react/optimize/memo`,
       ],
       collapsed: true,
