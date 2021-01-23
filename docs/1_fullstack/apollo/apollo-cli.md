@@ -13,6 +13,9 @@ https://www.apollographql.com/docs/devtools/apollo-config/
 - Front에서 API를 보내는것에 대한 확신이 있다.
 - 백앤드에서작성한 DTO가 (inputType) 덕분에 가능한것!
 
+- 내가 작성한 gql query 만 input,output type interface를 제공
+- 백앤드의 schema를 다운로드 가능
+
 ## 설치
 
 ```ts
@@ -47,7 +50,7 @@ module.exports = {
 };
 ```
 
-## 예제
+## 예제 apollo client:codegen
 
 ### gql 작성
 
@@ -137,4 +140,59 @@ export interface loginMutationVariables {
   email: string;
   password: string;
 }
+```
+
+## 예제 apollo client:download-schema
+
+- 명령
+
+```
+C:\Users\Dos\Desktop\Projects\nuber-eats_frontend>npx apollo client:download-schema  schema.gql
+  √ Loading Apollo Project
+  √ Saving schema to schema.gql
+```
+
+- 결과
+
+```ts
+"""
+Direct the client to resolve this field locally, either from the cache or local resolvers.
+"""
+directive @client(
+  """
+  When true, the client will never use the cache for this value. See
+  https://www.apollographql.com/docs/react/essentials/local-state/#forcing-resolvers-with-clientalways-true
+  """
+  always: Boolean
+) on FIELD | FRAGMENT_DEFINITION | INLINE_FRAGMENT
+
+"""
+Export this locally resolved field as a variable to be used in the remainder of this query. See
+https://www.apollographql.com/docs/react/essentials/local-state/#using-client-fields-as-variables
+"""
+directive @export(
+  """The variable name to export this field as."""
+  as: String!
+) on FIELD
+
+"""
+Specify a custom store key for this result. See
+https://www.apollographql.com/docs/react/advanced/caching/#the-connection-directive
+"""
+directive @connection(
+  """Specify the store key."""
+  key: String!
+
+  """
+  An array of query argument names to include in the generated custom store key.
+  """
+  filter: [String!]
+) on FIELD
+
+type DishChoice {
+  name: String!
+  extra: Int
+}
+
+...
 ```
