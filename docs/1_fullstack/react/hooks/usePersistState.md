@@ -18,7 +18,7 @@ https://dev.to/selbekk/persisting-your-react-state-in-9-lines-of-code-9go
 - ⚠ JSON.parse 입력은 무조건 string이어야함, 그래서 "null" 을 추가함.
 - ⚠ useState가 매번 localstorage에서 값을 불러온다. 이를 최적화 하기위해 ( ) => 으로 초기화
 
-```tsx
+```ts
 import React from "react";
 //@Params(initialState)
 //@returns (state,setState)
@@ -119,7 +119,7 @@ const Context03 = () => {
 export default Context03;
 ```
 
-```tsx
+```ts
 import React from "react";
 import { useCounterGetter } from "./counter-context";
 

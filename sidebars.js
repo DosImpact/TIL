@@ -13,6 +13,18 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "apollo",
+      items: [`${FULLSTACK_Folder}/apollo/apollo-cli`],
+      collapsed: true,
+    },
+    {
+      type: "category",
+      label: "dom",
+      items: [`${FULLSTACK_Folder}/dom/events`],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "NestJS",
       items: [
         `${FULLSTACK_Folder}/nestjs/nestjs-restapi`,
@@ -49,12 +61,7 @@ const sideBars = {
       ],
       collapsed: true,
     },
-    {
-      type: "category",
-      label: "apollo",
-      items: [`${FULLSTACK_Folder}/apollo/apollo-cli`],
-      collapsed: true,
-    },
+
     // ========== DB_Folder ====================
     {
       type: "doc",

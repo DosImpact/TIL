@@ -50,7 +50,7 @@ export default CounterContextProvider;
 
 - Provider 하위에 컴포넌트들이 변수를 공유하도록 만듦
 
-```tsx
+```ts
 import React from "react";
 import CounterContextProvider from "./counter-context";
 import CounterHandle from "./counter-handle";
@@ -84,7 +84,7 @@ export default CouterView;
 
 - CounterHandle : cnt변수를 증가시킨다.
 
-```tsx
+```ts
 import React, { useContext } from "react";
 import { CounterContext } from "./counter-context";
 const CounterHandle = () => {
@@ -110,7 +110,7 @@ export default CounterHandle;
 - useContext 하는 부분을 hook으로 만들어보자.
 - 바로 사용 가능한 함수를 만든다. 일종의 actionCreator에 대응하는 훅이다.
 
-```tsx
+```ts
 import React from "react";
 // CREATE
 interface ICounterContext {
@@ -167,9 +167,9 @@ export default CouterView;
 - 위와 유사하게 todolist를 연습해 보자.
 - 타이핑에 주의!
 
-### todo-context.tsx
+### todo-context.ts
 
-```tsx
+```ts
 import React from "react";
 interface todoEl {
   title: string;
@@ -254,15 +254,15 @@ export const usePushTodo = () => {
 };
 ```
 
-### context02.tsx
+### context02.ts
 
-```tsx
+```ts
 import React from "react";
 import TodoContextProvider from "./todo-context";
 import TodoInputs from "./todo-inputs";
 import TodoViewer from "./todo-viewer";
 // useContext의 todo list 버전
-// context.tsx 만들고
+// context.ts 만들고
 // provider 제공
 // useConxt getter/setter 제공
 const Context02 = () => {
@@ -279,9 +279,9 @@ const Context02 = () => {
 export default Context02;
 ```
 
-### todo-inputs.tsx
+### todo-inputs.ts
 
-```tsx
+```ts
 import React from "react";
 import { TodoContext, usePushTodo } from "./todo-context";
 
@@ -352,9 +352,9 @@ const TodoInputs = () => {
 export default TodoInputs;
 ```
 
-### todo-viewer.tsx
+### todo-viewer.ts
 
-```tsx
+```ts
 import React from "react";
 import { TodoContext } from "./todo-context";
 const TodoViewer = () => {
