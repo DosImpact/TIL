@@ -54,6 +54,7 @@ const sideBars = {
       label: "React",
       items: [
         `${FULLSTACK_Folder}/react/setting`,
+        `${FULLSTACK_Folder}/react/hooks/react-hook-form`,
         `${FULLSTACK_Folder}/react/hooks/use-modal`,
         `${FULLSTACK_Folder}/react/hooks/useContext`,
         `${FULLSTACK_Folder}/react/hooks/usePersistState`,
