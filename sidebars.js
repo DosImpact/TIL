@@ -97,6 +97,7 @@ const sideBars = {
       items: [
         `${CS_Folder}/algorithm/strategery`,
         `${CS_Folder}/algorithm/syntax/python02`,
+        `${CS_Folder}/algorithm/syntax/python03`,
       ],
       collapsed: true,
     },
