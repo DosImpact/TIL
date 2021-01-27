@@ -94,7 +94,10 @@ const sideBars = {
     {
       type: "category",
       label: "algorithm",
-      items: [`${CS_Folder}/algorithm/strategery`],
+      items: [
+        `${CS_Folder}/algorithm/strategery`,
+        `${CS_Folder}/algorithm/syntax/python02`,
+      ],
       collapsed: true,
     },
     {
