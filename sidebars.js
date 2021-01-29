@@ -53,6 +53,7 @@ const sideBars = {
       type: "category",
       label: "React",
       items: [
+        `${FULLSTACK_Folder}/react/design/slot`,
         `${FULLSTACK_Folder}/react/setting`,
         `${FULLSTACK_Folder}/react/hooks/react-hook-form`,
         `${FULLSTACK_Folder}/react/hooks/use-modal`,
