@@ -13,6 +13,12 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "typescript",
+      items: [`${FULLSTACK_Folder}/typescript/basicType`],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "apollo",
       items: [`${FULLSTACK_Folder}/apollo/apollo-cli`],
       collapsed: true,
