@@ -14,7 +14,10 @@ const sideBars = {
     {
       type: "category",
       label: "typescript",
-      items: [`${FULLSTACK_Folder}/typescript/basicType`],
+      items: [
+        `${FULLSTACK_Folder}/typescript/basicType`,
+        `${FULLSTACK_Folder}/typescript/interface01`,
+      ],
       collapsed: true,
     },
     {
