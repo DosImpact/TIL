@@ -22,6 +22,12 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "AI",
+      items: [`${FULLSTACK_Folder}/ai/numpy`],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "apollo",
       items: [`${FULLSTACK_Folder}/apollo/apollo-cli`],
       collapsed: true,
