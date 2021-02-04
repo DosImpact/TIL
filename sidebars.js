@@ -145,6 +145,12 @@ const sideBars = {
       ],
       collapsed: true,
     },
+    {
+      type: "category",
+      label: "Seminar",
+      items: [`${CS_Folder}/seminar/recommandServer`],
+      collapsed: true,
+    },
     // ========== ETC_Folder ====================
     {
       type: "doc",
