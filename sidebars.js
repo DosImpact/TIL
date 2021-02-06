@@ -158,6 +158,12 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "blog",
+      items: [`${ETC_Folder}/blog/lectures`],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "employ",
       items: [`${ETC_Folder}/employ/feedsite`],
       collapsed: true,
