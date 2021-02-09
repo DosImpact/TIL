@@ -112,6 +112,7 @@ const sideBars = {
       label: "algorithm",
       items: [
         `${CS_Folder}/algorithm/strategery`,
+        `${CS_Folder}/algorithm/bruteForce`,
         `${CS_Folder}/algorithm/syntax/python02`,
         `${CS_Folder}/algorithm/syntax/python03`,
         `${CS_Folder}/algorithm/math/base`,
