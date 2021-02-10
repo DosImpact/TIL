@@ -1,3 +1,7 @@
+---
+title: Brute Force
+---
+
 # 1.Brute Force
 
 # 풀이법
