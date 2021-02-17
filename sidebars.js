@@ -113,7 +113,8 @@ const sideBars = {
       items: [
         `${CS_Folder}/algorithm/strategery`,
         `${CS_Folder}/algorithm/bruteForce`,
-        `${CS_Folder}/algorithm/dp`,
+        `${CS_Folder}/algorithm/dp01`,
+        `${CS_Folder}/algorithm/dp02`,
         `${CS_Folder}/algorithm/syntax/python02`,
         `${CS_Folder}/algorithm/syntax/python03`,
         `${CS_Folder}/algorithm/search/ternerySearch`,
