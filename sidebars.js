@@ -83,6 +83,7 @@ const sideBars = {
     {
       type: "doc",
       id: `${DB_Folder}/schema`,
+      items: [`${DB_Folder}/sql/mysqlRead`],
     },
     {
       type: "category",
