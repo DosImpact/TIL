@@ -176,6 +176,12 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "stock",
+      items: [`${ETC_Folder}/stock/basic01`],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "util",
       items: [`${ETC_Folder}/util/PasteIntoFile`],
       collapsed: true,
