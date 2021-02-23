@@ -120,6 +120,7 @@ const sideBars = {
         `${CS_Folder}/algorithm/syntax/python02`,
         `${CS_Folder}/algorithm/syntax/python03`,
         `${CS_Folder}/algorithm/search/ternerySearch`,
+        `${CS_Folder}/algorithm/ds/trie`,
         `${CS_Folder}/algorithm/math/base`,
         `${CS_Folder}/algorithm/math/getPirmes`,
       ],
