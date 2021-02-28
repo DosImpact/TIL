@@ -34,6 +34,12 @@ const sideBars = {
     },
     {
       type: "category",
+      label: "js",
+      items: [`${FULLSTACK_Folder}/js/Hoisting`],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "dom",
       items: [`${FULLSTACK_Folder}/dom/events`],
       collapsed: true,
