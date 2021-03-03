@@ -125,6 +125,7 @@ const sideBars = {
         `${CS_Folder}/algorithm/graph01`,
         `${CS_Folder}/algorithm/syntax/python02`,
         `${CS_Folder}/algorithm/syntax/python03`,
+        `${CS_Folder}/algorithm/search/biSearch`,
         `${CS_Folder}/algorithm/search/ternerySearch`,
         `${CS_Folder}/algorithm/search/twopointer`,
         `${CS_Folder}/algorithm/math/base`,
