@@ -119,10 +119,12 @@ const sideBars = {
       label: "algorithm",
       items: [
         `${CS_Folder}/algorithm/ds/trie`,
+        `${CS_Folder}/algorithm/graph/graph01`,
+        `${CS_Folder}/algorithm/graph/graph02`,
+        `${CS_Folder}/algorithm/graph/segment`,
         `${CS_Folder}/algorithm/bruteForce`,
         `${CS_Folder}/algorithm/dp01`,
         `${CS_Folder}/algorithm/dp02`,
-        `${CS_Folder}/algorithm/graph01`,
         `${CS_Folder}/algorithm/syntax/python02`,
         `${CS_Folder}/algorithm/syntax/python03`,
         `${CS_Folder}/algorithm/search/biSearch`,
