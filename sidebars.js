@@ -130,6 +130,7 @@ const sideBars = {
         `${CS_Folder}/algorithm/search/biSearch`,
         `${CS_Folder}/algorithm/search/ternerySearch`,
         `${CS_Folder}/algorithm/search/twopointer`,
+        `${CS_Folder}/algorithm/sim/sim01`,
         `${CS_Folder}/algorithm/sort/sort01`,
         `${CS_Folder}/algorithm/sort/topologySort`,
         `${CS_Folder}/algorithm/math/base`,

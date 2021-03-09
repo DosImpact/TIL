@@ -1,3 +1,7 @@
+---
+title: sort 01
+---
+
 ## 문제유형 - 커스텀 정렬 함수
 
     - 가장 큰 수 : https://programmers.co.kr/learn/courses/30/lessons/42746
