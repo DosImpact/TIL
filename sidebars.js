@@ -51,6 +51,7 @@ const sideBars = {
         `${FULLSTACK_Folder}/nestjs/nestjs-restapi`,
         `${FULLSTACK_Folder}/nestjs/nestjs-graphql-api`,
         `${FULLSTACK_Folder}/nestjs/nestjs-prisma`,
+        `${FULLSTACK_Folder}/nestjs/nestjs-python-shell`,
         `${FULLSTACK_Folder}/nestjs/nestjs-msa-01`,
         `${FULLSTACK_Folder}/nestjs/nestjs-e2e`,
         `${FULLSTACK_Folder}/graphql/graphql-pubsub01`,

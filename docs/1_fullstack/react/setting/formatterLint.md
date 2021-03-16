@@ -1,10 +1,9 @@
 
-
 ---
 title: React Setting
 ---
 
-정리 
+```js
 
 	1. 프리티어가 아예 작동 안 할 때
 예상 원인 : Problems 탭을 보고 확인, 이후 재설치
@@ -17,7 +16,6 @@ title: React Setting
 
 	예상 원인 : 기본 포멧터 설정이 뭐로 되어있나 확인
 	- prettier 설치되고 오류도 인지하는데, 이상하게 작동이 안된다. 알고보니 다른 포멧터가 기본으로 셋되어 있다.
-
 
 "editor.codeActionsOnSave": {
       // For ESLint
@@ -151,4 +149,4 @@ Replace `··` with `↹`
   },
 
 
-
+```
